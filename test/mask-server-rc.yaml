@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mask-server
+  labels:
+    name: mask-server
+spec:
+  replicas: 3
+  selector:
+    name: mask-server
+  template:
+    metadata:
+      labels:
+        name: mask-server
+    spec:
+      containers:
+      - name: mask-server
+        image: sandy230207/mask-server:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
