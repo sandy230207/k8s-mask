@@ -9,6 +9,14 @@ db-create:
 
 db-login:
 	kubectl exec mysql-6755785976-48k72 -it -- mysql -u root -p
-	UPDATE MASK.STORE SET name="NCCU Pharmacy" WHERE id=5;
 
-	# 10.96.0.0~10.104.255.255
+scp:
+	scp -i "~/nccu/k8s/k8s.pem" ./mask-db.zip ec2-user@ec2-54-162-85-145.compute-1.amazonaws.com:mask-db.zip && \
+		scp -i "~/nccu/k8s/k8s.pem" ./mask-server.zip ec2-user@ec2-54-162-85-145.compute-1.amazonaws.com:mask-server.zip
+
+zip:
+	zip -r mask-db.zip mask-db/ && \
+		zip -r mask-server.zip mask-server/
+
+ssh:
+	ssh -i "~/nccu/k8s/k8s.pem" ec2-user@ec2-3-93-64-44.compute-1.amazonaws.com
