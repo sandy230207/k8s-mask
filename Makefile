@@ -20,3 +20,8 @@ zip:
 
 ssh:
 	ssh -i "~/nccu/k8s/k8s.pem" ec2-user@ec2-3-93-64-44.compute-1.amazonaws.com
+
+expose:
+	kubectl expose deploy chart-1610361324-mask-server \
+		--name mask-server-clusterip \
+		--type=ClusterIP
